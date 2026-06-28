@@ -1,0 +1,38 @@
+# Retail Sales Data Analysis
+
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Sample Sales Data
+data = {
+    "Product": ["Laptop", "Phone", "Tablet", "Headphones", "Smartwatch"],
+    "Price": [50000, 25000, 15000, 2000, 8000],
+    "Quantity": [10, 20, 15, 50, 25]
+}
+
+# Create DataFrame
+df = pd.DataFrame(data)
+
+# Calculate Total Sales
+df["Total Sales"] = df["Price"] * df["Quantity"]
+
+print("Retail Sales Data")
+print(df)
+
+# Overall Sales
+total = df["Total Sales"].sum()
+print("\nOverall Sales =", total)
+
+# Best Selling Product
+best = df.loc[df["Total Sales"].idxmax()]
+print("\nBest Selling Product:")
+print(best)
+
+# Plot Bar Chart
+plt.figure(figsize=(8,5))
+plt.bar(df["Product"], df["Total Sales"])
+plt.title("Product-wise Sales")
+plt.xlabel("Products")
+plt.ylabel("Total Sales (₹)")
+plt.grid(axis="y")
+plt.show()
